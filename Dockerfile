@@ -1,4 +1,4 @@
-FROM php:8.0-apache
+FROM php:7.4-fpm-alpine
 
 RUN apk add --no-cache nginx wget
 
@@ -14,7 +14,5 @@ RUN cd /app && \
     /usr/local/bin/composer install --no-dev
 
 RUN chown -R www-data: /app
-
-RUN composer update --ignore-platform-reqs
 
 CMD sh /app/docker/startup.sh
